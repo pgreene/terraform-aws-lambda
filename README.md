@@ -1,2 +1,2 @@
-# terraform-aws-lambda
+# terraform-aws-lambda-clean
 Terraform Module for AWS Lambda
