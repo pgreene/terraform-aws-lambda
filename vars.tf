@@ -250,9 +250,3 @@ variable "source_arn" {
   type        = string
   default     = null
 }
-
-variable "qualifier" {
-  description = "(Optional) Alias name or $LATEST."
-  type        = string
-  default     = null
-}
