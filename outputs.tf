@@ -1,5 +1,6 @@
 output "function_name" {
     value = aws_lambda_function.general.function_name
+    description = "Unique name for your Lambda Function."
 }
 
 output "arn" {
@@ -47,7 +48,19 @@ output "lambda_version" {
   description = "Latest published version of your Lambda Function."
 }
 
-#output "vpc_id" {
-#  value = aws_lambda_function.general.vpc_config.vpc_id[*]
-#  description = "ID of the VPC"
-#}
+# function url
+
+output "function_arn" {
+  value       = var.create_lambda_function_url && length(aws_lambda_function_url.general) > 0 ? aws_lambda_function_url.general[0].function_arn : null
+  description = "Function URL ARN, if created"
+}
+
+output "function_url" {
+  value       = var.create_lambda_function_url && length(aws_lambda_function_url.general) > 0 ? aws_lambda_function_url.general[0].function_url : null
+  description = "Function URL, if created"
+}
+
+output "url_id" {
+  value       = var.create_lambda_function_url && length(aws_lambda_function_url.general) > 0 ? aws_lambda_function_url.general[0].url_id : null
+  description = "Function URL ID, if created"
+}
