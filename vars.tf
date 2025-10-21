@@ -216,7 +216,6 @@ variable "qualifier" {
 
 variable "cors" {
     description = "(Optional) Cross-origin resource sharing (CORS) settings for the function URL."
-    type = list(map(string))
     default = null
 }
 
