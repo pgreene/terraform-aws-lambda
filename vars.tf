@@ -69,7 +69,12 @@ variable "layers" {
 
 variable "memory_size" {
   description = "(Optional) Amount of memory in MB your Lambda Function can use at runtime. Defaults to 128 if not set."
-  default = 4096
+  default = 128
+}
+
+variable "architectures" {
+  description = "(Optional) List of processor architectures your Lambda Function can run on. Valid values are arm64 and x86_64."
+  default = ["arm64"]
 }
 
 variable "dead_letter_config" {

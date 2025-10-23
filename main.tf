@@ -11,6 +11,7 @@ resource "aws_lambda_function" "general" {
   runtime = var.runtime
   timeout = var.timeout
   memory_size = var.memory_size
+  architectures = var.architectures
   kms_key_arn = var.kms_key_arn
   layers = var.create_lambda_layer ? [aws_lambda_layer_version.optional_layer[0].arn] : []
 
