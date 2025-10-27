@@ -102,3 +102,28 @@ resource "aws_lambda_permission" "general" {
   qualifier = var.qualifier
 }
 
+resource "aws_lambda_function_event_invoke_config" "general" {
+  count = var.create_lambda_function_event_invoke_config ? 1 : 0
+  function_name = var.function_name
+
+  maximum_event_age_in_seconds = var.maximum_event_age_in_seconds
+  maximum_retry_attempts       = var.maximum_retry_attempts
+
+  dynamic "destination_config" {
+    for_each = var.destination_config == null ? [] : [var.destination_config]
+    content {
+      dynamic "on_failure" {
+        for_each = var.destination_config.on_failure == null ? [] : [var.destination_config.on_failure]
+        content {
+          destination = on_failure.value.destination
+        }
+      }
+      dynamic "on_success" {
+        for_each = var.destination_config.on_success == null ? [] : [var.destination_config.on_success]
+        content {
+          destination = on_success.value.destination
+        }
+      }
+    }
+  }
+}

@@ -254,3 +254,34 @@ variable "source_arn" {
   type        = string
   default     = null
 }
+
+variable "create_lambda_function_event_invoke_config" {
+  description = "Whether to create a Lambda function event invoke config."
+  type        = bool
+  default     = false
+}
+
+variable "maximum_event_age_in_seconds" {
+  description = "(Optional) Maximum age of a request before Lambda stops processing."
+  type        = number
+  default     = null
+}
+
+variable "maximum_retry_attempts" {
+  description = "(Optional) Maximum number of retry attempts."
+  type        = number
+  default     = null
+}
+
+variable "destination_config" {
+  description = "(Optional) Destination configuration for the Lambda function."
+  #type = list(object({
+  #  on_failure = list(object({
+  #    destination = string
+  #  }))
+  #  on_success = list(object({
+  #    destination = string
+  #  }))
+  #}))
+  default = null
+}
